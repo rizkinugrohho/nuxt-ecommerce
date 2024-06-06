@@ -1,7 +1,7 @@
 export default {
   // Target Deployment
   target: 'server',
-  //rendering mode SSR
+  // rendering mode SSR
   ssr: true,
 
   loading: {
