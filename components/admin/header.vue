@@ -3,13 +3,13 @@
         <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
             data-class="c-sidebar-show">
             <svg class="c-icon c-icon-lg">
-                <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cilmenu"></use>
+                <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-menu"></use>
             </svg>
         </button>
-        <button class="c-header-toggler c-class-toggler mfs-3 d-md-downnone" type="button" data-target="#sidebar"
+        <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
             data-class="c-sidebar-lg-show" responsive="true">
             <svg class="c-icon c-icon-lg">
-                <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cilmenu"></use>
+                <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-menu"></use>
             </svg>
         </button>
         <ul class="c-header-nav ml-auto mr-4">
@@ -21,18 +21,18 @@
                 <div class="dropdown-menu dropdown-menu-right pt-0">
                     <div class="dropdown-header bg-light py-2 rounded"><strong>QUICK MENU</strong></div><a class="dropdown-item" href="#">
                         <svg class="c-icon mr-2">
-                            <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cilfolder"></use>
+                            <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-folder"></use>
                         </svg> Categories</a><a class="dropdown-item" href="#">
                         <svg class="c-icon mr-2">
-                            <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cillayers"></use>
+                            <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-layers"></use>
                         </svg> Products</a><a class="dropdown-item" href="#">
                         <svg class="c-icon mr-2">
-                            <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#ciluser"></use>
+                            <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-user"></use>
                         </svg> Customers</a>
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-header bg-light py-2 rounded"><strong>ORDERS</strong></div><a class="dropdown-item" href="#">
                         <svg class="c-icon mr-2">
-                            <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cilcart"></use>
+                            <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-cart"></use>
                         </svg> Invoices</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" role="button" @click="logout">
