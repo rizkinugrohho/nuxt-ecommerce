@@ -56,6 +56,7 @@ export default {
   plugins: [
     { src: '~/plugins/vue-star-rating.js', mode: 'client' },
     { src: '~/plugins/chart.js', mode: 'client' },
+    { src: '~/plugins/mixins.js' },
   ],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
