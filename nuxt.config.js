@@ -46,7 +46,7 @@ export default {
       { src: '/js/coreui.bundle.min.js' },
       {
         src: 'https://app.sandbox.midtrans.com/snap/snap.js',
-        'dataclient-key': 'SB-Mid-client-M5HF-xGXMyM84qmF',
+        'dataclient-key': 'SB-Mid-client-bWcHM3-QSyGV2hhw',
       },
     ],
   },
@@ -64,7 +64,71 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    // https://dev.auth.nuxtjs.org/
+    '@nuxtjs/auth-next',
   ],
+  auth: {
+    strategies: {
+      // strategy "admin"
+      admin: {
+        scheme: 'local',
+        token: {
+          property: 'token',
+          required: true,
+          type: 'Bearer',
+        },
+        user: {
+          property: 'user',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: {
+            url: '/api/admin/login',
+            method: 'post',
+            propertyName: 'token',
+          },
+          logout: {
+            url: '/api/admin/logout',
+            method: 'post',
+          },
+          user: {
+            url: '/api/admin/user',
+            method: 'get',
+            propertyName: 'user',
+          },
+        },
+      },
+      // strategy "customer"
+      customer: {
+        scheme: 'local',
+        token: {
+          property: 'token',
+          required: true,
+          type: 'Bearer',
+        },
+        user: {
+          property: 'user',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: {
+            url: '/api/customer/login',
+            method: 'post',
+            propertyName: 'token',
+          },
+          logout: {
+            url: '/api/customer/logout',
+            method: 'post',
+          },
+          user: {
+            url: '/api/customer/user',
+            method: 'get',
+            propertyName: 'user',
+          },
+        },
+      },
+    },
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'http://localhost:8000',
