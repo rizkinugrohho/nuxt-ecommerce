@@ -1,4 +1,9 @@
 export default {
+  // Target Deployment
+  target: 'server',
+  //rendering mode SSR
+  ssr: true,
+
   loading: {
     color: 'white', // <-- color
     height: '5px', // <-- height
