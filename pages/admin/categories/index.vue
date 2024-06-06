@@ -29,6 +29,16 @@
                                     <template v-slot:cell(image)="data">
                                         <img class="img-fluid" width="50" :src="data.item.image" />
                                     </template>
+                                    <template v-slot:cell(actions)="row">
+                                        <b-button :to="{
+                                                name: 'admin-categories-edit-id', params: {
+                                                    id:
+                                                        row.item.id
+                                                }
+                                            }" variant="info" size="sm">
+                                            EDIT
+                                        </b-button>
+                                    </template>
                                 </b-table>
                                 <!-- pagination -->
                                 <b-pagination align="right" :value="categories.current_page"
