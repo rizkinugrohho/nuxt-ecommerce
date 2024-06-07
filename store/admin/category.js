@@ -105,4 +105,21 @@ export const actions = {
         })
     })
   },
+  // destroy category
+  destroyCategory({ dispatch, commit }, payload) {
+    // set promise
+    return new Promise((resolve, reject) => {
+      // delete to Rest API "/api/admin/categories/:id" with method
+      'DELETE'
+      this.$axios
+        .delete(`/api/admin/categories/${payload}`)
+        // success
+        .then(() => {
+          // dispatch action "getCategoriesData"
+          dispatch('getCategoriesData')
+          // resolve promise
+          resolve()
+        })
+    })
+  },
 }

@@ -38,6 +38,8 @@
                                             }" variant="info" size="sm">
                                             EDIT
                                         </b-button>
+                                        <b-button variant="danger" size="sm"
+                                            @click="destroyCategory(row.item.id)">DELETE</b-button>
                                     </template>
                                 </b-table>
                                 <!-- pagination -->
@@ -114,6 +116,37 @@ export default {
             this.$store.dispatch('admin/category/getCategoriesData',
                 this.search)
         },
+        // method "destroyCategory"
+        destroyCategory(id) {
+            this.$swal.fire({
+                title: 'APAKAH ANDA YAKIN ?',
+                text: "INGIN MENGHAPUS DATA INI !",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'YA, HAPUS!',
+                cancelButtonText: 'TIDAK',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // dispatch to action "deleteCategory" vuex
+                    this.$store.dispatch('admin/category/destroyCategory', id)
+                        .then(() => {
+                            // feresh data
+                            this.$nuxt.refresh()
+                            // alert
+                            this.$swal.fire({
+                                title: 'BERHASIL!',
+                                text: "Data Berhasil Dihapus!",
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        })
+
+                }
+            })
+        }
     }
 }
 </script>
