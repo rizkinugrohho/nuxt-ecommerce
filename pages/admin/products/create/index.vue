@@ -208,7 +208,7 @@ export default {
                 .then(() => {
                     // sweet alert
                     this.$swal.fire({
-                        title: 'BERHASIL!',
+                        title: 'SUCCESS!',
                         text: "Data Saved Successfully!",
                         icon: 'success',
                         showConfirmButton: false,
