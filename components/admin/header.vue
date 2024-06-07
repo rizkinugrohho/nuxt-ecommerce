@@ -13,7 +13,7 @@
             </svg>
         </button>
         <ul class="c-header-nav ml-auto mr-4">
-            <li class="c-header-nav-item dropdown"><a class="c-header-navlink" data-toggle="dropdown" href="#"
+            <li class="c-header-nav-item dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="true" aria-expanded="false">
                     <div class="c-avatar"><img class="c-avatar-img" :src="`https://ui-avatars.com/api/?name=${user.name}&amp;background=4e73df&amp;color=ffffff&amp;size=100`">
                     </div>

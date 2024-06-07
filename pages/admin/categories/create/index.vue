@@ -6,7 +6,7 @@
                     <div class="col-md-12">
                         <div class="card border-0 rounded shadow-sm border-top-orange">
                             <div class="card-header">
-                                <span class="font-weight-bold"><i class="fa fafolder"></i> ADD NEW CATEGORY</span>
+                                <span class="font-weight-bold"><i class="fa fa-folder"></i> ADD NEW CATEGORY</span>
                             </div>
                             <div class="card-body">
                                 <form @submit.prevent="storeCategory">
