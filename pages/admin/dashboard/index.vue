@@ -64,7 +64,7 @@
                     <div class="col-md-12">
                         <div class="card border-0 rounded shadow-sm border-top-orange">
                             <div class="card-header">
-                                <span class="font-weight-bold"><i class="fa fa-chart-bar"></i> GRAFIK PENDAPATAN {{new
+                                <span class="font-weight-bold"><i class="fa fa-chart-bar"></i> INCOME CHARTS {{new
                                     Date().getFullYear()}}</span>
                             </div>
                             <div class="card-body">
@@ -83,12 +83,6 @@
 export default {
     // layout
     layout: 'admin',
-    // meta
-    head() {
-        return {
-            title: 'Dashboard - Administrator',
-        }
-    },
     async asyncData({ $axios }) {
         // fetching dashboard
         const dashboard = await $axios.$get('/api/admin/dashboard')
@@ -105,7 +99,7 @@ export default {
                 labels: dashboard.data.chart.month_name,
                 datasets: [
                     {
-                        label: `STATISTIK PENDAPATAN : ${new
+                        label: `INCOME STATISTICS : ${new
                             Date().getFullYear()}`,
                         backgroundColor: '#bccad8',
                         data: dashboard.data.chart.grand_total
@@ -116,6 +110,12 @@ export default {
         return {
             statistic,
             chart
+        }
+    },
+    // meta
+    head() {
+        return {
+            title: 'Dashboard - Administrator',
         }
     },
 }
