@@ -136,7 +136,7 @@ export default {
                             this.$nuxt.refresh()
                             // alert
                             this.$swal.fire({
-                                title: 'BERHASIL!',
+                                title: 'SUCCESS!',
                                 text: "Data Deleted Successfully!",
                                 icon: 'success',
                                 showConfirmButton: false,
