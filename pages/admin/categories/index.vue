@@ -119,14 +119,14 @@ export default {
         // method "destroyCategory"
         destroyCategory(id) {
             this.$swal.fire({
-                title: 'APAKAH ANDA YAKIN ?',
-                text: "INGIN MENGHAPUS DATA INI !",
+                title: 'ARE YOU SURE ?',
+                text: "WANT TO DELETE THIS DATA !",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#3085d6',
-                confirmButtonText: 'YA, HAPUS!',
-                cancelButtonText: 'TIDAK',
+                confirmButtonText: 'YES, DELETE!',
+                cancelButtonText: 'NO',
             }).then((result) => {
                 if (result.isConfirmed) {
                     // dispatch to action "deleteCategory" vuex
@@ -137,7 +137,7 @@ export default {
                             // alert
                             this.$swal.fire({
                                 title: 'BERHASIL!',
-                                text: "Data Berhasil Dihapus!",
+                                text: "Data Deleted Successfully!",
                                 icon: 'success',
                                 showConfirmButton: false,
                                 timer: 2000

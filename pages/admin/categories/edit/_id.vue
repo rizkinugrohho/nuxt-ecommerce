@@ -11,11 +11,11 @@
                             <div class="card-body">
                                 <form @submit.prevent="updateCategory">
                                     <div class="form-group">
-                                        <label>GAMBAR</label>
+                                        <label>IMAGE</label>
                                         <input type="file" @change="handleFileChange" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label>NAMA CATEGORY</label>
+                                        <label>CATEGORY NAME</label>
                                         <input type="text" v-model="category.name" placeholder="Masukkan Nama Category"
                                             class="form-control">
                                         <div v-if="validation.name" class="mt-2">
@@ -83,7 +83,7 @@ export default {
                 // show sweet alert
                 this.$swal.fire({
                     title: 'OOPS!',
-                    text: "Format File Tidak Didukung!",
+                    text: "File Format Not Supported!",
                     icon: 'error',
                     showConfirmButton: false,
                     timer: 2000
@@ -107,7 +107,7 @@ export default {
                     // sweet alert
                     this.$swal.fire({
                         title: 'BERHASIL!',
-                        text: "Data Berhasil Diupdate!",
+                        text: "Data Updated Successfully!",
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 2000
