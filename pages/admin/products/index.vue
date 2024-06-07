@@ -27,6 +27,17 @@
                                     </div>
                                 </div>
                                 <b-table striped bordered hover :items="products.data" :fields="fields" show-empty>
+                                    <template v-slot:cell(actions)="row">
+                                        <b-button :to="{
+                                                name: 'admin-products-edit-id', params: {
+                                                    id:
+                                                        row.item.id
+                                                }
+                                            }" variant="info" size="sm">
+                                            EDIT
+                                        </b-button>
+                                    </template>
+
                                     <template v-slot:cell(image)="data">
                                         <img class="img-fluid" width="50" :src="data.item.image" />
                                     </template>
