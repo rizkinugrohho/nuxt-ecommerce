@@ -30,7 +30,7 @@ export const actions = {
   // get products data
   getProductsData({ commit, state }, payload) {
     // search
-    let search = payload ? payload : ''
+    const search = payload || ''
     // set promise
     return new Promise((resolve, reject) => {
       // fetching Rest API "/api/admin/products" with method "GET"
@@ -43,6 +43,11 @@ export const actions = {
           // resolve promise
           resolve()
         })
+        // error handling
+        .catch((error) => {
+          // reject promise
+          reject(error)
+        });
     })
   },
   // store product
@@ -101,6 +106,23 @@ export const actions = {
         // error
         .catch((error) => {
           reject(error)
+        })
+    })
+  },
+  // destroy products
+  destroyProduct({ dispatch, commit }, payload) {
+    // set promise
+    return new Promise((resolve, reject) => {
+      // delete to Rest API "/api/admin/products/:id" with method
+      'DELETE'
+      this.$axios
+        .delete(`/api/admin/products/${payload}`)
+        // success
+        .then(() => {
+          // dispatch action "getProductsData"
+          dispatch('getProductsData')
+          // resolve promise
+          resolve()
         })
     })
   },

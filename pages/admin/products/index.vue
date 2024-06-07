@@ -36,6 +36,8 @@
                                             }" variant="info" size="sm">
                                             EDIT
                                         </b-button>
+                                        <b-button variant="danger" size="sm"
+                                            @click="destroyProduct(row.item.id)">DELETE</b-button>
                                     </template>
 
                                     <template v-slot:cell(image)="data">
@@ -125,8 +127,37 @@ export default {
             this.$store.dispatch('admin/product/getProductsData',
                 this.search)
         },
+        // method "destroyProduct"
+        destroyProduct(id) {
+            this.$swal.fire({
+                title: 'ARE YOU SURE ?',
+                text: "WANT TO DELETE THIS DATA !",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'YES, DELETE!',
+                cancelButtonText: 'NO',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // dispatch to action "deleteCategory" vuex
+                    this.$store.dispatch('admin/product/destroyProduct', id)
+                        .then(() => {
+                            // feresh data
+                            this.$nuxt.refresh()
+                            // alert
+                            this.$swal.fire({
+                                title: 'SUCCESS!',
+                                text: "Data Deleted Successfully!",
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        })
+                }
+            })
+        }
     }
 }
-
 </script>
-<style></style>
+<style>
