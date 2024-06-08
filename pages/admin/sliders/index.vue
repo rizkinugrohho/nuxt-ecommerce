@@ -17,6 +17,10 @@
                                     <template v-slot:cell(image)="data">
                                         <img class="img-fluid" width="200" :src="data.item.image" />
                                     </template>
+                                    <template v-slot:cell(actions)="row">
+                                        <b-button variant="danger" size="sm"
+                                            @click="destroySlider(row.item.id)">DELETE</b-button>
+                                    </template>
                                 </b-table>
                                 <!-- pagination -->
                                 <b-pagination align="right" :value="sliders.current_page" :total-rows="sliders.total"
@@ -82,6 +86,36 @@ export default {
             this.$store.dispatch('admin/slider/getSlidersData',
                 this.search)
         },
+        // method "destroySlider"
+        destroySlider(id) {
+            this.$swal.fire({
+                title: 'ARE YOU SURE ?',
+                text: "WANT TO DELETE THIS DATA !",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'YES, DELETE!',
+                cancelButtonText: 'NO',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // dispatch to action "destroySlider" vuex
+                    this.$store.dispatch('admin/slider/destroySlider', id)
+                        .then(() => {
+                            // feresh data
+                            this.$nuxt.refresh()
+                            // alert
+                            this.$swal.fire({
+                                title: 'SUCCESS!',
+                                text: "Data Deleted Successfully!",
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        })
+                }
+            })
+        }
     }
 }
 

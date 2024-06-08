@@ -58,4 +58,21 @@ export const actions = {
         })
     })
   },
+  // destroy slider
+  destroySlider({ dispatch, commit }, payload) {
+    // set promise
+    return new Promise((resolve, reject) => {
+      // delete to Rest API "/api/admin/sliders/:id" with method
+      'DELETE'
+      this.$axios
+        .delete(`/api/admin/sliders/${payload}`)
+        // success
+        .then(() => {
+          // dispatch action "getSlidersData"
+          dispatch('getSlidersData')
+          // resolve promise
+          resolve()
+        })
+    })
+  },
 }
