@@ -23,23 +23,30 @@
                                     </div>
                                 </div>
                             </div>
-                            <b-table striped bordered hover :items="invoices.data" :fields="fields" show-empty><template
-                                    v-slot:cell(grand_total)="row">
+                            <b-table striped bordered hover :items="invoices.data" :fields="fields" show-empty>
+                                <template v-slot:cell(grand_total)="row">
                                     Rp. {{ formatPrice(row.item.grand_total) }}
                                 </template>
                                 <template v-slot:cell(status)="row">
-                                    <button v-if="row.item.status == 'pending'" class="btn btn-sm btn-primary"><i
-                                            class="fa fa-circle-notch fa-spin"></i> {{
+                                    <button v-if="row.item.status == 'pending'" class="btn btn-sm
+btn-primary"><i class="fa fa-circle-notch fa-spin"></i> {{
                                         row.item.status }}</button>
                                     <button v-if="row.item.status == 'success'" class="btn btn-sm btn-success"><i
-                                            class="fa fa-check-circle"></i> {{
-                                        row.item.status }}</button>
+                                            class="fa fa-check-circle"></i> {{ row.item.status
+                                        }}</button>
                                     <button v-if="row.item.status == 'expired'" class="btn btn-sm btn-warning-2"><i
                                             class="fa fa-exclamation-triangle"></i> {{
                                         row.item.status }}</button>
                                     <button v-if="row.item.status == 'failed'" class="btn btn-sm btn-danger"><i
                                             class="fa fa-times-circle"></i> {{ row.item.status
                                         }}</button>
+                                </template>
+                                <template v-slot:cell(actions)="row">
+                                    <b-button :to="{
+                                        name: 'customer-invoices-show-snap_token', params: { snap_token: row.item.snap_token }
+                                    }" variant="info" size="sm">
+                                        DETAIL
+                                    </b-button>
                                 </template>
                             </b-table>
                             <!-- pagination -->
@@ -58,19 +65,17 @@
 // import sidebar
 import Sidebar from '@/components/web/sidebar.vue'
 export default {
-    // middleware
-    middleware: 'isCustomer',
-    // layout
-    layout: 'default',
     // register components
     components: {
         Sidebar
     },
-    // meta
-    head() {
-        return {
-            title: 'Invoices - Customer',
-        }
+    // layout
+    layout: 'default',
+    // middleware
+    middleware: 'isCustomer',
+    // hook "asyncData"
+    async asyncData({ store }) {
+        await store.dispatch('customer/invoice/getInvoicesData')
     },
     // data function
     data() {
@@ -100,9 +105,11 @@ export default {
 
         }
     },
-    // hook "asyncData"
-    async asyncData({ store }) {
-        await store.dispatch('customer/invoice/getInvoicesData')
+    // meta
+    head() {
+        return {
+            title: 'Invoices - Customer',
+        }
     },
     // computed
     computed: {
