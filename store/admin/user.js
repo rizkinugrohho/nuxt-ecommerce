@@ -38,4 +38,24 @@ export const actions = {
         })
     })
   },
+  // store user
+  storeUser({ dispatch, commit }, payload) {
+    // set promise
+    return new Promise((resolve, reject) => {
+      // store to Rest API "/api/admin/users" with method "POST"
+      this.$axios
+        .post('/api/admin/users', payload)
+        // success
+        .then(() => {
+          // dispatch action "getUsersData"
+          dispatch('getUsersData')
+          // resolve promise
+          resolve()
+        })
+        // error
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
 }
