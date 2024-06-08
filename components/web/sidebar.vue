@@ -8,10 +8,11 @@
                     class="list-group-item text-decoration-none text-dark text-uppercase"><i
                         class="fa fa-tachometer-alt"></i> Dashboard
                 </nuxt-link>
-                <a href="#" class="list-group-item text-decoration-none text-dark text-uppercase"><i
-                        class="fa fa-shopping-cart"></i> My Orders
-                </a>
-                <a @click="logout" class="list-group-item text-decoration-none text-dark text-uppercase" style="cursor: pointer;"><i class="fa fa-sign-out-alt"></i>
+                <nuxt-link :to="{ name: 'customer-invoices' }" class="list-group-item text-decoration-none text-dark text-uppercase"><i class="fa fa-shopping-cart"></i> My Orders
+                </nuxt-link>
+
+                <a @click="logout" class="list-group-item text-decoration-none text-dark text-uppercase"
+                    style="cursor: pointer;"><i class="fa fa-sign-out-alt"></i>
                     Logout
                 </a>
             </ul>
