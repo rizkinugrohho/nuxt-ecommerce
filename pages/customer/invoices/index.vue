@@ -28,8 +28,7 @@
                                     Rp. {{ formatPrice(row.item.grand_total) }}
                                 </template>
                                 <template v-slot:cell(status)="row">
-                                    <button v-if="row.item.status == 'pending'" class="btn btn-sm
-btn-primary"><i class="fa fa-circle-notch fa-spin"></i> {{
+                                    <button v-if="row.item.status == 'pending'" class="btn btn-sm btn-primary"><i class="fa fa-circle-notch fa-spin"></i> {{
                                         row.item.status }}</button>
                                     <button v-if="row.item.status == 'success'" class="btn btn-sm btn-success"><i
                                             class="fa fa-check-circle"></i> {{ row.item.status
