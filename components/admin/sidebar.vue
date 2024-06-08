@@ -1,12 +1,12 @@
 <template>
     <ul class="c-sidebar-nav">
-        <li class="c-sidebar-nav-item"><nuxt-link :to="{ name: 'admindashboard' }" class="c-sidebar-nav-link"
+        <li class="c-sidebar-nav-item"><nuxt-link :to="{ name: 'admin-dashboard' }" class="c-sidebar-nav-link"
                 href="index.html">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-speedometer"></use>
                 </svg> Dashboard</nuxt-link></li>
         <li class="c-sidebar-nav-title">MASTER DATA</li>
-        <li class="c-sidebar-nav-item"><nuxt-link :to="{ name: 'admincategories' }" class="c-sidebar-nav-link">
+        <li class="c-sidebar-nav-item"><nuxt-link :to="{ name: 'admin-categories' }" class="c-sidebar-nav-link">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-folder"></use>
                 </svg> Categories</nuxt-link>
@@ -29,7 +29,7 @@
         <li class="c-sidebar-nav-item">
             <nuxt-link :to="{ name: 'admin-customers' }" class="c-sidebar-nav-link">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#ci-luser"></use>
+                    <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-user"></use>
                 </svg> Customers
             </nuxt-link>
         </li>
