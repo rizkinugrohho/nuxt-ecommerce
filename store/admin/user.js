@@ -4,6 +4,8 @@ export const state = () => ({
   users: [],
   // page
   page: 1,
+  // user
+  user: {},
 })
 // mutations
 export const mutations = {
@@ -16,6 +18,11 @@ export const mutations = {
   SET_PAGE(state, payload) {
     // set value state "page"
     state.page = payload
+  },
+  // mutation "SET_USER_DATA"
+  SET_USER_DATA(state, payload) {
+    // set value state "user"
+    state.user = payload
   },
 }
 // actions
@@ -45,6 +52,43 @@ export const actions = {
       // store to Rest API "/api/admin/users" with method "POST"
       this.$axios
         .post('/api/admin/users', payload)
+        // success
+        .then(() => {
+          // dispatch action "getUsersData"
+          dispatch('getUsersData')
+          // resolve promise
+          resolve()
+        })
+        // error
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
+  // get detail user
+  getDetailUser({ commit }, payload) {
+    // set promise
+    return new Promise((resolve, reject) => {
+      // get to Rest API "/api/admin/users/:id" with method "GET"
+      this.$axios
+        .get(`/api/admin/users/${payload}`)
+        // success
+        .then((response) => {
+          // commit to mutation "SET_USER_DATA"
+          commit('SET_USER_DATA', response.data.data)
+          // resolve promise
+          resolve()
+        })
+    })
+  },
+  // update user
+  updateUser({ dispatch, commit }, { userId, payload }) {
+    // set promise
+    return new Promise((resolve, reject) => {
+      // store to Rest API "/api/admin/users/:id" with method
+      'POST'
+      this.$axios
+        .post(`/api/admin/users/${userId}`, payload)
         // success
         .then(() => {
           // dispatch action "getUsersData"
