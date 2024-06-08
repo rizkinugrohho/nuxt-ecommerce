@@ -1,5 +1,5 @@
 <template>
-    <header class="c-header c-header-light c-header-fixed c-header-withsubheader">
+    <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
         <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
             data-class="c-sidebar-show">
             <svg class="c-icon c-icon-lg">
