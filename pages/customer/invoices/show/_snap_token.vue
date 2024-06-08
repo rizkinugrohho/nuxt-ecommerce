@@ -94,13 +94,14 @@
                                         </td>
                                         <td>:</td>
                                         <td>
-                                            <button v-if="invoice.status == 'pending'" class="btn btn-info">PAYMENT NOW</button>
+                                            <button @click="payment(invoice.snap_token)"
+                                                v-if="invoice.status == 'pending'" class="btn btn-info">PAYMENT NOW</button>
                                             <button v-else-if="invoice.status == 'success'" class="btn btn-success"><i
-                                                    class="fa fa-checkcircle"></i> {{ invoice.status }}</button>
+                                                    class="fa fa-check-circle"></i> {{ invoice.status }}</button>
                                             <button v-else-if="invoice.status == 'expired'" class="btn btn-warning-2"><i
-                                                    class="fa faexclamation-triangle"></i> {{ invoice.status }}</button>
+                                                    class="fa fa-exclamation-triangle"></i> {{ invoice.status }}</button>
                                             <button v-else-if="invoice.status == 'failed'" class="btn btn-danger"><i
-                                                    class="fa fa-timescircle"></i> {{ invoice.status }}</button>
+                                                    class="fa fa-times-circle"></i> {{ invoice.status }}</button>
                                         </td>
                                     </tr>
                                 </client-only>
@@ -109,7 +110,7 @@
                     </div>
                     <div class="card border-0 rounded shadow-sm border-top-orange mt-4">
                         <div class="card-header">
-                            <span class="font-weight-bold"><i class="fa fa-shoppingcart"></i> DETAIL ITEMS</span>
+                            <span class="font-weight-bold"><i class="fa fa-shopping-cart"></i> DETAIL ITEMS</span>
                         </div>
                         <div class="card-body">
                             <table class="table" style="border-style: solid !important;border-color: rgb(198, 206, 214) !important;">
@@ -154,7 +155,7 @@ import Sidebar from '@/components/web/sidebar.vue'
 export default {
     // middleware
     middleware: 'isCustomer',
-    //layout
+    // layout
     layout: 'default',
     // register components
     components: {
@@ -177,6 +178,38 @@ export default {
             return this.$store.state.customer.invoice.invoice
         }
     },
+    // method
+    methods: {
+        // method "payment"
+        payment(snap_token) {
+            window.snap.pay(snap_token, {
+                onSuccess: function () {
+                    router.push({
+                        name: 'invoices-show-snap_token',
+                        params: {
+                            snap_token: snap_token
+                        }
+                    })
+                },
+                onPending: function () {
+                    router.push({
+                        name: 'invoices-show-snap_token',
+                        params: {
+                            snap_token: snap_token
+                        }
+                    })
+                },
+                onError: function () {
+                    router.push({
+                        name: 'invoices-show-snap_token',
+                        params: {
+                            snap_token: snap_token
+                        }
+                    })
+                }
+            })
+        },
+    }
 }
 </script>
 <style></style>
