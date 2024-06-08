@@ -42,10 +42,12 @@
                 </svg> Sliders
             </nuxt-link>
         </li>
-        <li class="c-sidebar-nav-item"><a href="#" class="c-sidebar-nav-link">
+        <li class="c-sidebar-nav-item">
+            <nuxt-link :to="{ name: 'admin-users' }" class="c-sidebar-nav-link">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="@/node_modules/@coreui/icons/sprites/free.svg#cil-group"></use>
-                </svg> Users</a>
+                </svg> Users
+            </nuxt-link>
         </li>
         <li class="c-sidebar-nav-divider"></li>
     </ul>
