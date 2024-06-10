@@ -37,11 +37,12 @@
                                     </div>
                                     <div v-if="validation.password" class="mt-2">
                                         <b-alert show variant="danger">{{
-                                            validation.password[0] }}</b-alert>
+                                    validation.password[0] }}</b-alert>
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
-                                            <button class="btn btn-warning shadow-sm rounded-sm px-4 w-100" type="submit">LOGIN</button>
+                                            <button class="btn btn-warning shadow-sm rounded-sm px-4 w-100"
+                                                type="submit">LOGIN</button>
                                         </div>
                                     </div>
                                 </form>
@@ -51,7 +52,7 @@
                 </div>
             </div>
             <div class="text-center mt-3">
-                Don't have an account? <nuxt-link :to="{name: 'customer-register'}" class="font-weight-bold">Register
+                Don't have an account? <nuxt-link :to="{ name: 'customer-register' }" class="font-weight-bold">Register
                     Now</nuxt-link>
             </div>
         </div>
@@ -89,6 +90,9 @@ export default {
                 }
             })
                 .then(() => {
+                    // fething carts on Rest API
+                    this.$store.dispatch('web/cart/getCartsData')
+                    this.$store.dispatch('web/cart/getCartPrice')
                     // redirect
                     this.$router.push({
                         name: 'customer-dashboard'

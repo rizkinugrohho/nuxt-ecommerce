@@ -8,7 +8,9 @@
                     class="list-group-item text-decoration-none text-dark text-uppercase"><i
                         class="fa fa-tachometer-alt"></i> Dashboard
                 </nuxt-link>
-                <nuxt-link :to="{ name: 'customer-invoices' }" class="list-group-item text-decoration-none text-dark text-uppercase"><i class="fa fa-shopping-cart"></i> My Orders
+                <nuxt-link :to="{ name: 'customer-invoices' }"
+                    class="list-group-item text-decoration-none text-dark text-uppercase"><i
+                        class="fa fa-shopping-cart"></i> My Orders
                 </nuxt-link>
 
                 <a @click="logout" class="list-group-item text-decoration-none text-dark text-uppercase"
@@ -27,6 +29,9 @@ export default {
         async logout() {
             // logout auth
             await this.$auth.logout()
+            // set state
+            this.$store.commit('web/cart/SET_CARTS_DATA', [])
+            this.$store.commit('web/cart/SET_CART_PRICE', 0)
             // redirect route customer login
             this.$router.push({
                 name: 'customer-login'
