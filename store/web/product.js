@@ -23,7 +23,7 @@ export const actions = {
   // get products data
   getProductsData({ commit, state }, payload) {
     // search
-    let search = payload ? payload : ''
+    const search = payload || ''
     // set promise
     return new Promise((resolve, reject) => {
       // fetching Rest API "/api/web/products" with method "GET"
