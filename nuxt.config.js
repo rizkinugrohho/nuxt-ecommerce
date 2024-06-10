@@ -61,7 +61,26 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: [
+    '@nuxtjs/pwa', // <-- register PWA
+  ],
+  pwa: {
+    meta: {
+      title: 'SHOE STORE - Official Indonesia SHOES Distributor',
+      author: 'Xiaomi Indonesia',
+    },
+    manifest: {
+      name: 'Xiaomi',
+      short_name: 'xiaomi',
+      description: 'SHOE STORE - Official Indonesia SHOES Distributor',
+      lang: 'en',
+    },
+    icon: {
+      fileName: 'images/logo.png',
+      sizes: [64, 120, 144, 152, 192, 384, 512],
+    },
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/bootstrap
