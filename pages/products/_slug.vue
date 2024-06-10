@@ -44,7 +44,7 @@
                             <hr>
                             <button @click="addToCart(product.id,
                                 calculateDiscount(product), product.weight)" class="btn btn-lg btn-warning border-0 shadow-sm"><i
-                                    class="fa fa-shopping-cart"></i> ADD TO CHART</button>
+                                    class="fa fa-shopping-cart"></i> ADD TO CART</button>
                         </div>
                     </div>
                 </div>
