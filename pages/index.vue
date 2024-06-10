@@ -97,7 +97,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Official Online Store Selling Shoe Products'
+        content: 'SHOE STORE - Official Indonesia SHOES Distributor'
       },
       ]
     }
