@@ -13,7 +13,7 @@
                         <div class="search-wrap">
                             <div class="input-group w-100">
                                 <input type="text" class="form-control search-form" style="width:55%;"
-                                    placeholder="mau belanja apa hari ini ?">
+                                    placeholder="what to buy now ?">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary search-button"> <i class="fa fa-search"></i>
                                     </button>
@@ -35,18 +35,35 @@
                 <div class="d-md-none my-2">
                     <div class="input-group">
                         <input type="search" name="search" class="form-control"
-                            placeholder="mau belanja apa hari ini ?">
+                            placeholder="what to buy now ?">
                         <div class="input-group-append">
                             <button class="btn btn-warning"> <i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </div>
-                <button class="navbar-toggler collapsed" type="button" datatoggle="collapse" data-target="#dropdown6"
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#dropdown6"
                     aria-expanded="false"> <span class="navbar-toggler-icon"></span> </button>
                 <div class="navbar-collapse collapse" id="dropdown6">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i class="fa fa-list-ul"></i>
-                                CATEGORY</a> </li>
+                        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#"
+                                data-toggle="dropdown" data-abc="true" aria-expanded="false"><i
+                                    class="fa fa-list-ul"></i> CATEGORY</a>
+                            <div class="dropdown-menu">
+                                <nuxt-link :to="{
+    name: 'categories-slug', params: {
+        slug:
+            category.slug
+    }
+}" class="dropdown-item" v-for="category in categories" :key="category.id">
+                                    <img :src="category.image" width="50"> {{ category.name }}
+                                </nuxt-link>
+                                <div class="dropdown-divider"></div>
+                                <nuxt-link :to="{ name: 'categories' }" class="dropdown-item active text-center" href=""
+                                    data-abc="true">
+                                    VIEW ALL CATEGORIES <i class="fa fa-long-arrow-alt-right"></i>
+                                </nuxt-link>
+                            </div>
+                        </li>
                         <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i
                                     class="fa fa-shopping-bag"></i> ALL PRODUCTS</a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i
@@ -61,7 +78,7 @@
                                 ACCOUNT</nuxt-link>
                         </li>
                         <li class="nav-item dropdown" v-if="$auth.loggedIn">
-                            <nuxt-link :to="{ name: 'customer-dashboard' }" class="navlink" href="#" role="button"
+                            <nuxt-link :to="{name: 'customer-dashboard'}" class="nav-link" href="#" role="button"
                                 aria-expanded="false"> <i class="fa fa-tachometer-alt"></i>
                                 DASHBOARD</nuxt-link>
                         </li>
@@ -73,6 +90,18 @@
 </template>
 <script>
 export default {
+    // hook "fetch"
+    async fetch() {
+        // fething sliders on Rest API
+        await this.$store.dispatch('web/category/getCategoriesData')
+    },
+    // computed
+    computed: {
+        // categories
+        categories() {
+            return this.$store.state.web.category.categories
+        },
+    }
 }
 </script>
 <style scoped>
