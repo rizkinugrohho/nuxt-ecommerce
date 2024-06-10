@@ -17,7 +17,7 @@
                 <Nuxt />
                 <!-- end content -->
                 <footer class="c-footer">
-                    <div><strong>MI STORE</strong> &copy; 2021 -
+                    <div><strong>SHOE STORE</strong> &copy; 2021 -
                         https://rizkinugroho.netlify.app</div>
                     <div class="ml-auto">Template by&nbsp;<a href="https://coreui.io/">CoreUI</a></div>
                 </footer>

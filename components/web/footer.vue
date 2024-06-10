@@ -5,7 +5,7 @@
                 <div class="col-md-5 mb-4">
                     <h4 class="font-weight-bold">ABOUT</h4>
                     <hr style="border-top: 3px solid rgb(226, 232, 240); border-radius: 0.5rem;">
-                    <p> Trusted Official Mi Store in Indonesia. Safe and
+                    <p> Trusted Official Shoes Store in Indonesia. Safe and
                         &amp; Lowest Price! Shop now. </p>
                 </div>
                 <div class="col-md-3 mb-4">

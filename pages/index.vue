@@ -18,16 +18,16 @@ export default {
   // meta
   head() {
     return {
-      title: 'MI STORE - Distributor Xiaomi Indonesia Resmi',
+      title: 'SHOE STORE - Official Indonesia SHOES Distributor',
       meta: [{
         hid: 'og:title',
         name: 'og:title',
-        content: 'MI STORE - Distributor Xiaomi Indonesia Resmi'
+        content: 'SHOE STORE - Official Indonesia SHOES Distributor'
       },
       {
         hid: 'og:site_name',
         name: 'og:site_name',
-        content: 'MI STORE - Distributor Xiaomi Indonesia Resmi'
+        content: 'SHOE STORE - Official Indonesia SHOES Distributor'
       },
       {
         hid: 'og:image',
@@ -37,7 +37,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Official Toko Online Penjualan Produk Xiaomi'
+        content: 'Official Online Store Selling Shoe Products'
       },
       ]
     }
