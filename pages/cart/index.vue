@@ -14,7 +14,8 @@
                                         <tr v-for="cart in carts" :key="cart.id" style="background: #edf2f7;">
                                             <td class="b-none" width="25%">
                                                 <div class="wrapper-image-cart">
-                                                    <img :src="cart.product.image" style="width: 100%;border-radius: .5rem">
+                                                    <img :src="cart.product.image"
+                                                        style="width: 100%;border-radius: .5rem">
                                                 </div>
                                             </td>
                                             <td class="b-none" width="50%">
@@ -38,7 +39,8 @@
                                                 </p>
                                                 <br>
                                                 <div class="text-right">
-                                                    <button class="btn btn-sm btn-danger">
+                                                    <button @click.prevent="removeCart(cart.id)"
+                                                        class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </div>
@@ -57,7 +59,7 @@
                                             Rp.</td>
                                         <td class="text-right set-td ">
                                             <p class="m-0" id="subtotal"> {{
-                                                formatPrice(cartPrice) }}
+                formatPrice(cartPrice) }}
                                             </p>
                                         </td>
                                     </tr>
@@ -139,7 +141,8 @@
                                 <img src="/images/shopping-cart.png" width="150" height="150"
                                     class="img-fluid mb-4 mr-3">
                                 <h3><strong>Empty Shopping Cart :)</strong></h3>
-                                <nuxt-link :to="{name: 'products'}" class="btn btn-warning btn-lg mt-4" data-abc="true">CONTINUE SHOPPING
+                                <nuxt-link :to="{ name: 'products' }" class="btn btn-warning btn-lg mt-4"
+                                    data-abc="true">CONTINUE SHOPPING
                                 </nuxt-link>
                             </div>
                         </div>
@@ -161,12 +164,12 @@ export default {
                 hid: 'og:title',
                 name: 'og:title',
                 content: 'Cart - SHOE STORE - Official Indonesia SHOES Distributor'
- },
+            },
             {
                 hid: 'og:site_name',
                 name: 'og:site_name',
                 content: 'Cart - SHOE STORE - Official Indonesia SHOES Distributor'
- },
+            },
             {
                 hid: 'og:image',
                 name: 'og:image',
@@ -176,7 +179,7 @@ export default {
                 hid: 'description',
                 name: 'description',
                 content: 'Cart - SHOE STORE - Official Indonesia SHOES Distributor'
- },
+            },
             ]
         }
     },
@@ -200,7 +203,7 @@ export default {
             return this.$store.state.web.cart.cartPrice
         },
     },
-    // ata function
+    // data function
     data() {
         return {
             // state customer
@@ -217,6 +220,42 @@ export default {
             },
         }
     },
+    // method
+    methods: {
+        // method "removeCart"
+        async removeCart(cartId) {
+            await this.$swal.fire({
+                title: 'ARE YOU SURE ?',
+                text: "WANT TO DELETE THIS DATA !",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'YES, DELETE!',
+                cancelButtonText: 'NO',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // call action vuex "getCartsData"
+                    this.$store.dispatch('web/cart/removeCart', {
+                        cart_id: cartId
+                    })
+                        .then(async () => {
+                            // dispatch action "getCartPrice"
+                            await
+                                this.$store.dispatch('web/cart/getCartPrice')
+                            // alert
+                            this.$swal.fire({
+                                title: 'SUCCESS!',
+                                text: "Product Successfully Removed from Cart!",
+                                icon: 'success',
+                                showConfirmButton: false,
+                                timer: 2000
+                            })
+                        })
+                }
+            })
+        },
+    }
 }
 </script>
 <style scoped>
