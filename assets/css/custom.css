@@ -8,14 +8,14 @@ a {
 }
 
 a:hover {
-    color: #ac0800;
+    color: #4668a5;
 }
 
 .header-main {
     position: relative;
     padding-top: 7px;
     padding-bottom: 7px;
-    background-color: #e64a19
+    background-color: #6495ED
 }
 
 .logo {
@@ -58,7 +58,7 @@ a:hover {
     text-align: center;
     border-radius: 3rem;
     color: #fff;
-    background-color: #fa3434
+    background-color: #5a86d5
 }
 
 .mr-3,
@@ -71,27 +71,27 @@ a:hover {
 }
 
 .search-button {
-    color: #e64a19;
+    color: #6495ED;
     background-color: #ffffff;
     border-color: #ffffff
 }
 
 .search-button:hover {
-    color: #e64a19;
+    color: #6495ED;
     background-color: #ffffff;
     border-color: #ffffff
 }
 
 .btn-warning {
     color: #fff;
-    background-color: #e64a19!important;
-    border-color: #e64a19!important;
+    background-color: #6495ED!important;
+    border-color: #6495ED!important;
 }
 
 .btn-warning:hover {
     color: #fff;
-    background-color: #e64a19!important;
-    border-color: #e64a19!important
+    background-color: #6495ED!important;
+    border-color: #6495ED!important
 }
 
 .btn-warning-2 {
@@ -111,7 +111,7 @@ a:hover {
 }
 
 .border-top-orange {
-    border-top: 3px solid #e64a19!important;
+    border-top: 3px solid #6495ED!important;
 }
 
 .navbar-main {
@@ -239,14 +239,14 @@ hr.solid {
 .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #e64a19;
+    background-color: #6495ED;
     border-radius: .5rem;
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
     color: #fff;
     text-decoration: none;
-    background-color: #e64a19;
+    background-color: #6495ED;
     border-radius: .5rem;
 }
 
@@ -286,7 +286,7 @@ hr.solid {
 }
 
 .bg-cart {
-    background-color: #e64a19;
+    background-color: #6495ED;
     color: #fff
 }
 
@@ -323,7 +323,7 @@ hr.solid {
 }
 
 .text-red {
-    color: #ac0800;
+    color: #4668a5;
 }
 
 /**
@@ -335,14 +335,14 @@ hr.solid {
 }
 
 .c-sidebar .c-sidebar-brand, .c-sidebar .c-sidebar-header {
-    background: #e64a19;
+    background: #6495ED;
 }
 
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #e64a1a;
-    border-color: #e64a1a;
+    background-color: #739fee;
+    border-color: #739fee;
 }
 
 /**

@@ -9,7 +9,7 @@
                         &amp; Lowest Price! Shop now. </p>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <h4 class="font-weight-bold">>PAYMENT METHODS</h4>
+                    <h4 class="font-weight-bold">PAYMENT METHODS</h4>
                     <hr style="border-top: 3px solid rgb(226, 232, 240); border-radius: 0.5rem;">
                     <div class="row">
                         <div class="col-md-4 col-4 mb-3">
