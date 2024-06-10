@@ -6,7 +6,7 @@
                 <div class="col-md-7">
                     <div class="card border-0 rounded border-top-orange shadow-sm">
                         <div class="card-body">
-                            <h5>DETAIL CART</h5>
+                            <h5>DETAIL PESANAN</h5>
                             <hr>
                             <table class="table table-cart">
                                 <tbody>
@@ -14,8 +14,7 @@
                                         <tr v-for="cart in carts" :key="cart.id" style="background: #edf2f7;">
                                             <td class="b-none" width="25%">
                                                 <div class="wrapper-image-cart">
-                                                    <img :src="cart.product.image"
-                                                        style="width: 100%;border-radius: .5rem">
+                                                    <img :src="cart.product.image" style="width: 100%;border-radius: .5rem">
                                                 </div>
                                             </td>
                                             <td class="b-none" width="50%">
@@ -120,10 +119,10 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="font-weight-bold">PROVINCE</label>
+                                        <label class="font-weight-bold">PROVINCES</label>
                                         <select class="form-control" v-model="rajaongkir.province_id"
                                             @change="getCities">
-                                            <option value="">-- select province --</option>
+                                            <option value="">-- select provinces --</option>
                                             <option v-for="province in provinces" :key="province.id"
                                                 :value="province.province_id">
                                                 {{ province.name }}</option>
@@ -135,8 +134,7 @@
                                         <label class="font-weight-bold">CITY</label>
                                         <select class="form-control" v-model="rajaongkir.city_id" @change="showCourier">
                                             <option value="">-- select city --</option>
-                                            <option v-for="city in cities" :key="city.id" :value="city.city_id">{{
-                city.name }}</option>
+                                            <option v-for="city in cities" :key="city.id" :value="city.city_id">{{ city.name }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -148,14 +146,12 @@
                                             <input class="form-check-input select-courier" type="radio" name="courier"
                                                 id="ongkos_kirim-jne" value="jne" v-model="courier.courier_name"
                                                 @change="showService">
-                                            <label class="form-check-label font-weight-bold mr-4"
-                                                for="ongkos_kirim-jne">
+                                            <label class="form-check-label font-weight-bold mr-4" for="ongkos_kirim-jne">
                                                 JNE</label>
                                             <input class="form-check-input select-courier" type="radio" name="courier"
                                                 id="ongkos_kirim-tiki" value="tiki" v-model="courier.courier_name"
                                                 @change="showService">
-                                            <label class="form-check-label font-weight-bold mr-4"
-                                                for="ongkos_kirim-jnt">TIKI</label>
+                                            <label class="form-check-label font-weight-bold mr-4" for="ongkos_kirim-jnt">TIKI</label>
                                             <input class="form-check-input select-courier" type="radio" name="courier"
                                                 id="ongkos_kirim-pos" value="pos" v-model="courier.courier_name"
                                                 @change="showService">
@@ -174,17 +170,15 @@
                                             <input class="form-check-input" type="radio" name="cost" :id="value.service"
                                                 :value="value.cost[0].value + '|' + value.service"
                                                 v-model="courier.courier_service_cost" @change="getServiceCost">
-                                            <label class="form-check-label font-weight-normal mr-5"
-                                                :for="value.service">
-                                                {{ value.service }} - Rp. {{
-                formatPrice(value.cost[0].value) }}</label>
+                                            <label class="form-check-label font-weight-normal mr-5" :for="value.service">
+                                                {{ value.service }} - Rp. {{ formatPrice(value.cost[0].value) }}</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="font-weight-bold">ADDRESS</label>
-                                        <textarea class="form-control" id="alamat" rows="3" placeholder="Insert Address"
+                                        <textarea class="form-control" id="alamat" rows="3" placeholder="address"
                                             v-model="customer.address"></textarea>
                                         <div v-if="validation.address" class="mt-2 alert alert-danger">
                                             Insert Address
@@ -192,7 +186,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12" v-if="btnCheckout">
-                                    <button class="btn btn-warning btn-lg btn-block">CHECKOUT</button>
+                                    <button @click.prevent="checkout"
+                                        class="btn btn-warning btn-lg btn-block">CHECKOUT</button>
                                 </div>
                             </div>
                         </div>
@@ -394,6 +389,72 @@ export default {
                 parseInt(this.courier.courier_cost)
             // show button checkout
             this.btnCheckout = true
+        },
+        // method "checkout"
+        async checkout() {
+            // Reset validation states
+            this.validation.name = false;
+            this.validation.phone = false;
+            this.validation.address = false;
+
+            // Check apakah ada nama, phone, address dan berat produk ?
+            if (this.customer.name && this.customer.phone && this.customer.address && this.cartWeight) {
+                // Define formData
+                let formData = new FormData();
+                formData.append('courier', this.courier.courier_name);
+                formData.append('courier_service', this.courier.courier_service);
+                formData.append('courier_cost', this.courier.courier_cost);
+                formData.append('weight', this.cartWeight);
+                formData.append('name', this.customer.name);
+                formData.append('phone', this.customer.phone);
+                formData.append('address', this.customer.address);
+                formData.append('city_id', this.rajaongkir.city_id);
+                formData.append('province_id', this.rajaongkir.province_id);
+                formData.append('grand_total', this.grandTotal);
+
+                try {
+                    // Sending data to action "storeCheckout" vuex
+                    const response = await this.$store.dispatch('web/checkout/storeCheckout', formData);
+
+                    // Success
+                    this.$swal.fire({
+                        title: 'SUCCESS!',
+                        text: "Checkout Completed Successfully!",
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+
+                    // Redirect route "detail invoice"
+                    this.$router.push({
+                        name: 'customer-invoices-show-snap_token',
+                        params: {
+                            snap_token: response.snap_token
+                        }
+                    });
+                } catch (error) {
+                    console.error(error); // Log the error to the console
+                    this.$swal.fire({
+                        title: 'Error!',
+                        text: 'An error occurred during checkout. Please try again.',
+                        icon: 'error',
+                        showConfirmButton: true
+                    });
+                }
+            } else {
+                // Check validasi name
+                if (!this.customer.name) {
+                    this.validation.name = true;
+                }
+                // Check validasi phone
+                if (!this.customer.phone) {
+                    this.validation.phone = true;
+                }
+                // Check validasi address
+                if (!this.customer.address) {
+                    this.validation.address = true;
+                }
+            }
         },
     }
 }
