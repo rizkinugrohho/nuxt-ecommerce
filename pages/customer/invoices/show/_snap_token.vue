@@ -95,11 +95,13 @@
                                         <td>:</td>
                                         <td>
                                             <button @click="payment(invoice.snap_token)"
-                                                v-if="invoice.status == 'pending'" class="btn btn-info">PAYMENT NOW</button>
+                                                v-if="invoice.status == 'pending'" class="btn btn-info">PAYMENT
+                                                NOW</button>
                                             <button v-else-if="invoice.status == 'success'" class="btn btn-success"><i
                                                     class="fa fa-check-circle"></i> {{ invoice.status }}</button>
                                             <button v-else-if="invoice.status == 'expired'" class="btn btn-warning-2"><i
-                                                    class="fa fa-exclamation-triangle"></i> {{ invoice.status }}</button>
+                                                    class="fa fa-exclamation-triangle"></i> {{ invoice.status
+                                                }}</button>
                                             <button v-else-if="invoice.status == 'failed'" class="btn btn-danger"><i
                                                     class="fa fa-times-circle"></i> {{ invoice.status }}</button>
                                         </td>
@@ -113,14 +115,16 @@
                             <span class="font-weight-bold"><i class="fa fa-shopping-cart"></i> DETAIL ITEMS</span>
                         </div>
                         <div class="card-body">
-                            <table class="table" style="border-style: solid !important;border-color: rgb(198, 206, 214) !important;">
+                            <table class="table"
+                                style="border-style: solid !important;border-color: rgb(198, 206, 214) !important;">
                                 <tbody>
                                     <client-only>
                                         <tr v-for="order in invoice.orders" :key="order.id"
                                             style="background: #edf2f7;">
                                             <td class="b-none" width="25%">
                                                 <div class="wrapper-image-cart">
-                                                    <img :src="order.product.image" style="width: 100%;border-radius: .5rem">
+                                                    <img :src="order.product.image"
+                                                        style="width: 100%;border-radius: .5rem">
                                                 </div>
                                             </td>
                                             <td class="b-none" width="50%">
@@ -133,10 +137,62 @@
                                                                 }}</b></td>
                                                     </tr>
                                                 </table>
+                                                <!-- modal button -->
+                                                <button v-if="invoice.status == 'success'" type="button"
+                                                    class="btn btn-warning-2 mt-4" data-toggle="modal"
+                                                    :data-target="'#modal-' + order.id">
+                                                    GIVE A REVIEW
+                                                </button>
+                                                <!-- Modal -->
+                                                <div class="modal fade" ref="modal" :id="'modal-' + order.id"
+                                                    tabindex="-1" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">REVIEW
+                                                                    PRODUCT</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="row justify-content-center">
+                                                                    <div class="col-md-7">
+                                                                        <vue-star-rating v-model="rating.star"
+                                                                            :show-rating="false">
+                                                                        </vue-star-rating>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mt-4">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label
+                                                                                class="font-weight-bold">REVIEW</label>
+                                                                            <textarea class="form-control" id="alamat"
+                                                                                rows="3"
+                                                                                placeholder="Insert Product Review"
+                                                                                v-model="rating.review"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">CLOSE</button>
+                                                                <button v-if="rating.star &&
+                                                rating.review" @click.prevent="storeReview(order.id, order.product.id)"
+                                                                    type="button" class="btn btn-warning"
+                                                                    data-dismiss="modal">SEND</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </td>
                                             <td class="b-none text-right">
                                                 <p class="m-0 font-weight-bold">Rp. {{
-                                                    formatPrice(order.price) }}</p>
+                                                formatPrice(order.price) }}</p>
                                             </td>
                                         </tr>
                                     </client-only>
@@ -156,6 +212,16 @@ export default {
     // middleware
     middleware: 'isCustomer',
     // layout
+    // data function
+    data() {
+        return {
+            // state rating
+            rating: {
+                star: 0,
+                review: ''
+            },
+        }
+    },
     layout: 'default',
     // register components
     components: {
@@ -209,6 +275,46 @@ export default {
                 }
             })
         },
+        // method "storeReview"
+        async storeReview(orderId, productId) {
+            // define formData
+            let formData = new FormData();
+            formData.append('rating', this.rating.star)
+            formData.append('review', this.rating.review)
+            formData.append('order_id', orderId)
+            formData.append('product_id', productId)
+            // sending data to action "storeReview" vuex
+            await this.$store.dispatch('customer/review/storeReview',
+                formData)
+                // success
+                .then(() => {
+                    // feresh data
+                    this.$nuxt.refresh()
+                    // clear state
+                    this.rating.star = 0
+                    this.rating.review = ''
+                    // sweet alert
+                    this.$swal.fire({
+                        title: 'SUCCESS!',
+                        text: "Review Saved Successfully!",
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    // redirect route same page
+                    this.$router.push({ path: this.$route.path });
+                })
+                .catch(() => {
+                    // sweet alert
+                    this.$swal.fire({
+                        title: 'FAILED!',
+                        text: "You have already created a review for this product!",
+                        icon: 'error',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                })
+        }
     }
 }
 </script>
