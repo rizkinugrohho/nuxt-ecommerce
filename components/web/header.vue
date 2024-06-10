@@ -23,7 +23,8 @@
                     </div>
                     <div class="col-lg-5 col-xl-4 col-sm-8 col-md-4 col-7">
                         <div class="d-flex justify-content-end">
-                            <a href="#" class="btn search-button btn-md d-md-block ml-4"><i class="fa fa-shopping-cart"></i> <span class="ml-2">0</span> |
+                            <a href="#" class="btn search-button btn-md d-md-block ml-4"><i
+                                    class="fa fa-shopping-cart"></i> <span class="ml-2">0</span> |
                                 Rp. 0</a>
                         </div>
                     </div>
@@ -34,8 +35,7 @@
             <div class="container-fluid">
                 <div class="d-md-none my-2">
                     <div class="input-group">
-                        <input type="search" name="search" class="form-control"
-                            placeholder="what to buy now ?">
+                        <input type="search" name="search" class="form-control" placeholder="what to buy now ?">
                         <div class="input-group-append">
                             <button class="btn btn-warning"> <i class="fa fa-search"></i></button>
                         </div>
@@ -64,8 +64,8 @@
                                 </nuxt-link>
                             </div>
                         </li>
-                        <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i
-                                    class="fa fa-shopping-bag"></i> ALL PRODUCTS</a> </li>
+                        <li class="nav-item"> <nuxt-link :to="{ name: 'products' }" class="nav-link" data-abc="true"><i
+                                    class="fa fa-shopping-bag"></i> ALL PRODUCTS</nuxt-link> </li>
                         <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i
                                     class="fa fa-info-circle"></i> ABOUT</a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i class="fa fa-comments"></i>
@@ -78,7 +78,7 @@
                                 ACCOUNT</nuxt-link>
                         </li>
                         <li class="nav-item dropdown" v-if="$auth.loggedIn">
-                            <nuxt-link :to="{name: 'customer-dashboard'}" class="nav-link" href="#" role="button"
+                            <nuxt-link :to="{ name: 'customer-dashboard' }" class="nav-link" href="#" role="button"
                                 aria-expanded="false"> <i class="fa fa-tachometer-alt"></i>
                                 DASHBOARD</nuxt-link>
                         </li>
