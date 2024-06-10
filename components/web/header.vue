@@ -6,25 +6,24 @@
                     <div class="col-lg-3 col-sm-4 col-md-4 col-5">
                         <nuxt-link to="/" class="brand-wrap" data-abc="true">
                             <img src="/images/xiaomi.png" width="35" class="bg-light p-2 rounded">
-                            <span class="logo">SHOE STORE</span>
+                            <span class="logo">MI STORE</span>
                         </nuxt-link>
                     </div>
                     <div class="col-lg-4 col-xl-5 col-sm-8 col-md-4 d-none d-md-block">
                         <div class="search-wrap">
                             <div class="input-group w-100">
-                                <input type="text" class="form-control search-form" style="width:55%;"
-                                    placeholder="what to buy now ?">
+                                <input type="text" class="form-control search-form" v-model="search"
+                                    @keypress.enter="searchData" style="width:55%;"
+                                    placeholder="Search Here">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary search-button"> <i class="fa fa-search"></i>
-                                    </button>
+                                    <button @click="searchData" class="btn btn-primary search-button"> <i class="fa fa-search"></i> </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-xl-4 col-sm-8 col-md-4 col-7">
                         <div class="d-flex justify-content-end">
-                            <a href="#" class="btn search-button btn-md d-md-block ml-4"><i
-                                    class="fa fa-shopping-cart"></i> <span class="ml-2">0</span> |
+                            <a href="#" class="btn search-button btn-md d-md-block ml-4"><i class="fa fa-shopping-cart"></i> <span class="ml-2">0</span> |
                                 Rp. 0</a>
                         </div>
                     </div>
@@ -35,9 +34,10 @@
             <div class="container-fluid">
                 <div class="d-md-none my-2">
                     <div class="input-group">
-                        <input type="search" name="search" class="form-control" placeholder="what to buy now ?">
+                        <input type="search" name="search" class="form-control" v-model="search"
+                            @keypress.enter="searchData" placeholder="Search Here">
                         <div class="input-group-append">
-                            <button class="btn btn-warning"> <i class="fa fa-search"></i></button>
+                            <button @click="searchData" class="btn btn-warning"> <i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </div>
@@ -47,25 +47,27 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#"
                                 data-toggle="dropdown" data-abc="true" aria-expanded="false"><i
-                                    class="fa fa-list-ul"></i> CATEGORY</a>
+                                    class="fa fa-list-ul"></i> CATEGORIES</a>
                             <div class="dropdown-menu">
                                 <nuxt-link :to="{
-    name: 'categories-slug', params: {
-        slug:
-            category.slug
-    }
-}" class="dropdown-item" v-for="category in categories" :key="category.id">
-                                    <img :src="category.image" width="50"> {{ category.name }}
+                                        name: 'categories-slug', params: {
+                                            slug:
+                                                category.slug
+                                        }
+                                    }" class="dropdown-item" v-for="category in categories" :key="category.id">
+                                    <img :src="category.image" width="50"> {{
+                                        category.name }}
                                 </nuxt-link>
                                 <div class="dropdown-divider"></div>
                                 <nuxt-link :to="{ name: 'categories' }" class="dropdown-item active text-center" href=""
                                     data-abc="true">
-                                    VIEW ALL CATEGORIES <i class="fa fa-long-arrow-alt-right"></i>
+                                    SHOW ALL CATEGORIES <i class="fa fa-long-arrow-alt-right"></i>
                                 </nuxt-link>
                             </div>
                         </li>
                         <li class="nav-item"> <nuxt-link :to="{ name: 'products' }" class="nav-link" data-abc="true"><i
-                                    class="fa fa-shopping-bag"></i> ALL PRODUCTS</nuxt-link> </li>
+                                    class="fa fa-shopping-bag"></i>
+                                ALL PRODUCTS</nuxt-link> </li>
                         <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i
                                     class="fa fa-info-circle"></i> ABOUT</a> </li>
                         <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i class="fa fa-comments"></i>
@@ -78,7 +80,7 @@
                                 ACCOUNT</nuxt-link>
                         </li>
                         <li class="nav-item dropdown" v-if="$auth.loggedIn">
-                            <nuxt-link :to="{ name: 'customer-dashboard' }" class="nav-link" href="#" role="button"
+                            <nuxt-link :to="{name: 'customer-dashboard'}" class="nav-link" href="#" role="button"
                                 aria-expanded="false"> <i class="fa fa-tachometer-alt"></i>
                                 DASHBOARD</nuxt-link>
                         </li>
@@ -101,6 +103,24 @@ export default {
         categories() {
             return this.$store.state.web.category.categories
         },
+    },
+    // data function
+    data() {
+        return {
+            // state search
+            search: ''
+        }
+    },
+    // method
+    methods: {
+        searchData() {
+            this.$router.push({
+                name: 'search',
+                query: {
+                    q: this.search
+                }
+            });
+        }
     }
 }
 </script>
