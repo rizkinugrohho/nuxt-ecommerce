@@ -161,8 +161,8 @@ export default {
                 .then(() => {
                     // sweet alert
                     this.$swal.fire({
-                        title: 'BERHASIL!',
-                        text: "Product Berhasil Ditambahkan di Keranjang!",
+                        title: 'SUCCESS!',
+                        text: "Product Successfully Added to Cart!",
                         icon: 'success',
                         showConfirmButton: false,
                         timer: 3000
