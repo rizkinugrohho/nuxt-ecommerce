@@ -1,4 +1,8 @@
 # nuxt-ecommerce
+# DEMO
+## <a href = "https://www.youtube.com/watch?v=N2I7d__Z1DM" target="_blank"> CLICK HERE </a>
+
+[![WATCH](https://img.youtube.com/vi/N2I7d__Z1DM/0.jpg)](https://www.youtube.com/watch?v=N2I7d__Z1DM)
 
 ## Build Setup
 
