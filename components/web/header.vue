@@ -1,6 +1,6 @@
 <template>
     <header class="section-header fixed-top">
-        <section class="header-main border-bottom">
+        <section class="header-main">
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-sm-4 col-md-4 col-5">
@@ -45,10 +45,10 @@
                     </div>
                 </div>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#dropdown6"
-                    aria-expanded="false"> <span class="navbar-toggler-icon"></span> </button>
+                    aria-expanded="false"> <span class="navbar-toggler-icon a1"></span> </button>
                 <div class="navbar-collapse collapse" id="dropdown6">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#"
+                        <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle a1" href="#"
                                 data-toggle="dropdown" data-abc="true" aria-expanded="false"><i
                                     class="fa fa-list-ul"></i> CATEGORIES</a>
                             <div class="dropdown-menu">
@@ -68,22 +68,22 @@
                                 </nuxt-link>
                             </div>
                         </li>
-                        <li class="nav-item"> <nuxt-link :to="{ name: 'products' }" class="nav-link" data-abc="true"><i
+                        <li class="nav-item"> <nuxt-link :to="{ name: 'products' }" class="nav-link a1" data-abc="true"><i
                                     class="fa fa-shopping-bag"></i>
                                 ALL PRODUCTS</nuxt-link> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i
+                        <li class="nav-item"> <a href="#" class="nav-link a1" dataabc="true"><i
                                     class="fa fa-info-circle"></i> ABOUT</a> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link" dataabc="true"><i class="fa fa-comments"></i>
+                        <li class="nav-item"> <a href="#" class="nav-link a1" dataabc="true"><i class="fa fa-comments"></i>
                                 CONTACT</a> </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown" v-if="!$auth.loggedIn">
-                            <nuxt-link :to="{ name: 'customer-login' }" class="nav-link" href="#" role="button"
+                            <nuxt-link :to="{ name: 'customer-login' }" class="nav-link a1" href="#" role="button"
                                 aria-expanded="false"> <i class="fa fa-user-circle"></i>
                                 ACCOUNT</nuxt-link>
                         </li>
                         <li class="nav-item dropdown" v-if="$auth.loggedIn">
-                            <nuxt-link :to="{ name: 'customer-dashboard' }" class="nav-link" href="#" role="button"
+                            <nuxt-link :to="{ name: 'customer-dashboard' }" class="nav-link a1" href="#" role="button"
                                 aria-expanded="false"> <i class="fa fa-tachometer-alt"></i>
                                 DASHBOARD</nuxt-link>
                         </li>

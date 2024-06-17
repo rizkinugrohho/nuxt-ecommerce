@@ -1,21 +1,25 @@
 body {
-    font-family: 'Quicksand', sans-serif;
-    background: #BCCAD8;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #FFFFFF;
 }
 
 a {
     color: #000;
 }
 
+.a1 {
+    color: #FFF;
+}
+
 a:hover {
-    color: #4668a5;
+    color: #ee2c00;
 }
 
 .header-main {
     position: relative;
     padding-top: 7px;
     padding-bottom: 7px;
-    background-color: #6495ED
+    background-color: #000000
 }
 
 .logo {
@@ -67,31 +71,31 @@ a:hover {
 }
 
 .search-form {
-    border: 1px solid #ffffff !important
+    border: 1px solid #FFFFFF !important
 }
 
 .search-button {
-    color: #6495ED;
-    background-color: #ffffff;
-    border-color: #ffffff
+    color: #FFFFFF;
+    background-color: #000000;
+    border-color: #FFFFFF;
 }
 
 .search-button:hover {
-    color: #6495ED;
-    background-color: #ffffff;
-    border-color: #ffffff
+    color: #000000;
+    background-color: #FFFFFF;
+    border-color: #FFFFFF
 }
 
 .btn-warning {
     color: #fff;
-    background-color: #6495ED!important;
-    border-color: #6495ED!important;
+    background-color: #000000!important;
+    border-color: #000000!important;
 }
 
 .btn-warning:hover {
     color: #fff;
-    background-color: #6495ED!important;
-    border-color: #6495ED!important
+    background-color: #000000!important;
+    border-color: #000000!important
 }
 
 .btn-warning-2 {
@@ -111,11 +115,11 @@ a:hover {
 }
 
 .border-top-orange {
-    border-top: 3px solid #6495ED!important;
+    border-top: 3px solid #000000!important;
 }
 
 .navbar-main {
-    background-color: #fff
+    background-color: #000000
 }
 
 .navbar-toggler {
@@ -128,7 +132,7 @@ a:hover {
     padding: 4px;
     font-size: 1.25rem;
     line-height: 1;
-    background-color: transparent;
+    background-color: white;
     border: 1px solid transparent;
     border-radius: 0.37rem
 }
@@ -144,7 +148,7 @@ a:hover {
     padding: .5rem 0;
     margin: .5rem 7px 0px;
     font-size: 1rem;
-    color: #212529;
+    color: #292121;
     text-align: left;
     list-style: none;
     background-color: #fff;
@@ -213,8 +217,8 @@ hr.solid {
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: white;
-    color: black
+    background-color: black;
+    color: white
 }
 
 .carousel-indicators li {
@@ -239,14 +243,14 @@ hr.solid {
 .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #6495ED;
+    background-color: #000000;
     border-radius: .5rem;
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
-    color: #fff;
+    color: #000000;
     text-decoration: none;
-    background-color: #6495ED;
+    background-color: #f3f3f3;
     border-radius: .5rem;
 }
 
@@ -263,7 +267,7 @@ hr.solid {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
+    border: 1px solid rgb(0, 0, 0);
     border-radius: .1875rem
 }
 
@@ -286,7 +290,7 @@ hr.solid {
 }
 
 .bg-cart {
-    background-color: #6495ED;
+    background-color: #000000;
     color: #fff
 }
 
@@ -323,7 +327,7 @@ hr.solid {
 }
 
 .text-red {
-    color: #4668a5;
+    color: #ef1111;
 }
 
 /**
@@ -335,7 +339,7 @@ hr.solid {
 }
 
 .c-sidebar .c-sidebar-brand, .c-sidebar .c-sidebar-header {
-    background: #6495ED;
+    background: #000000;
 }
 
 .page-item.active .page-link {
