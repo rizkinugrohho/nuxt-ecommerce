@@ -1,3 +1,5 @@
+# Backend :
+<a href = "https://github.com/rizkinugrohho/Laravel8-Ecommerce" target="_blank"> Link Backend </a>
 # nuxt-ecommerce
 # DEMO
 ## <a href = "https://www.youtube.com/watch?v=N2I7d__Z1DM" target="_blank"> CLICK HERE </a>
