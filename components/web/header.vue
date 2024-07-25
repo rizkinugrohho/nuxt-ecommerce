@@ -71,8 +71,8 @@
                         <li class="nav-item"> <nuxt-link :to="{ name: 'products' }" class="nav-link a1" data-abc="true"><i
                                     class="fa fa-shopping-bag"></i>
                                 ALL PRODUCTS</nuxt-link> </li>
-                        <li class="nav-item"> <a href="#" class="nav-link a1" dataabc="true"><i
-                                    class="fa fa-info-circle"></i> ABOUT</a> </li>
+                                <li class="nav-item"> <nuxt-link :to="{ name: 'about' }" class="nav-link a1" data-abc="true"><i
+                                    class="fa fa-info-circle"></i> ABOUT</nuxt-link> </li>
                         <li class="nav-item"> <a href="#" class="nav-link a1" dataabc="true"><i class="fa fa-comments"></i>
                                 CONTACT</a> </li>
                     </ul>

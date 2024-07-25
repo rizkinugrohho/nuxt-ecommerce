@@ -3,7 +3,7 @@
         <div class="text-center mb-4">
             <nuxt-link to="/" class="text-black">
                 <img src="/images/logo.png" width="50">
-                <h3 class="mt-2 font-weight-bold">MI STORE</h3>
+                <h3 class="mt-2 font-weight-bold">SHOE STORE</h3>
             </nuxt-link>
         </div>
         <div class="card-group">
