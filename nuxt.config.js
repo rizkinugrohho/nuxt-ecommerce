@@ -157,7 +157,7 @@ export default {
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://ecommerce.kelompok3spk.my.id',
+    baseURL: 'https://ecommerce.kelompok3spk.my.id/',
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
