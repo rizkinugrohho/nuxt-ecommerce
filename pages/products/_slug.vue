@@ -72,8 +72,7 @@
                                                 </vue-star-rating>
                                             </client-only>
                                             <strong>
-                                                <span class="text-dark">{{ review.customer.name
-                                                    }}</span>
+                                                <span class="text-dark">{{ review.customer.name }}</span>
                                             </strong>
                                             <div class="description mt-2">
                                                 <span style="color: rgb(119, 118, 118);font-size:15px;font-style:italic">
