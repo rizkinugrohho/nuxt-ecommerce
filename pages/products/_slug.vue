@@ -62,7 +62,7 @@
                                     <div class="row">
                                         <div class="col-md-1">
                                             <div class="review-avatar avatar-sm">
-                                                <img :src="`https://uiavatars.com/api/?name=${review.customer.name}&amp;background=4e73df&amp; color=ffffff&amp;size=100`">
+                                                <img :src="`https://ui-avatars.com/api/?name=${review.customer.name}&amp;background=4e73df&amp; color=ffffff&amp;size=100`">
                                             </div>
                                         </div>
                                         <div class="col-md-11">
