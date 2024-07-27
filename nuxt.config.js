@@ -67,11 +67,11 @@ export default {
   pwa: {
     meta: {
       title: 'SHOE STORE - Official Indonesia SHOES Distributor',
-      author: 'Xiaomi Indonesia',
+      author: 'Shoe Store',
     },
     manifest: {
-      name: 'Xiaomi',
-      short_name: 'xiaomi',
+      name: 'Shoe Store',
+      short_name: 'Shoe Store',
       description: 'SHOE STORE - Official Indonesia SHOES Distributor',
       lang: 'en',
     },
