@@ -349,13 +349,10 @@ hr.solid {
     border-color: #739fee;
 }
 
-/**
-* vue star rating
-*/
-/* .vue-star-rating[data-v-fde73a0c] {
+ .vue-star-rating[data-v-fde73a0c] {
     display: initial!important;
     align-items: center;
-} */
+}
 
 .review-avatar {
     white-space: nowrap;
