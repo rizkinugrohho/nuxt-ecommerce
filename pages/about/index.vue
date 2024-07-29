@@ -12,21 +12,17 @@
                 <div class="col-md-8">
                     <div class="card border-0 rounded shadow-sm">
                         <div class="card-body">
-                            <h3 class="card-title">Kelompok 3</h3>
+                            <h3 class="card-title">E-commerce</h3>
                             <p class="card-text">
-                                Analisis dan Perancangan Sistem Informasi Penjualan Online Toko Sepatu Pada PT. Romusha
+                                Analisis dan Perancangan Sistem Informasi Penjualan Online Toko Sepatu
                             </p>
                             <p class="card-text">
                                <ol>
-                                <li>Rizki Nugroho       - 2022804021</li>
-                                <li>Ressa Nurhermawan   - 2022804003</li>
-                                <li>Mega Agustriani     - 2022804015</li>
-                                <li>Asih Safitri        - 2022804011</li>
-                                <li>Intan Aprilia       - 2022804020</li>
-                               </ol>
+                                <li>Rizki Nugroho</li>
+
                             </p>
                             <p class="card-text">
-                                Tujuan dari penelitian dilakukan adalah membuat
+                                Tujuan nya adalah membuat
                                 website toko online berbasis ecommerce yang dapat diakses secara
                                 online, promosi produk melalui website sebagai media promosi yang
                                 efektif dan efisien, memudahkan perusahaan dalam pembuatan laporan
