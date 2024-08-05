@@ -2,9 +2,9 @@
 <a href = "https://github.com/rizkinugrohho/Laravel8-Ecommerce" target="_blank"> Link Backend </a>
 # nuxt-ecommerce
 # DEMO
-## <a href = "https://www.youtube.com/watch?v=N2I7d__Z1DM" target="_blank"> CLICK HERE </a>
+## <a href = "http://kelompok3spk.vercel.app" target="_blank"> CLICK HERE </a>
 
-[![WATCH](https://img.youtube.com/vi/N2I7d__Z1DM/0.jpg)](https://www.youtube.com/watch?v=N2I7d__Z1DM)
+[![WATCH](https://img.youtube.com/vi/N2I7d__Z1DM/0.jpg)](http://kelompok3spk.vercel.app/)
 
 ## Build Setup
 
